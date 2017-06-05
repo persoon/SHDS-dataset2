@@ -58,6 +58,7 @@ public class Generator {
         try {
             jExperiment.put("horizon", timeHorizon);
             jExperiment.put("priceSchema", priceSchema);
+            jExperiment.put("granularity", ruleGenerator.getGran());
 
             JSONObject jAgents = new JSONObject();
 
@@ -124,7 +125,8 @@ public class Generator {
         try {
             jExperiment.put("horizon", timeHorizon);
             jExperiment.put("priceSchema", priceSchema);
-
+            jExperiment.put("granularity", ruleGenerator.getGran());
+            
             JSONObject jAgents = new JSONObject();
 
             int aCount = 0;

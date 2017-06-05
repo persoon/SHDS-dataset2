@@ -269,12 +269,12 @@ public class SHDS {
         ArrayList rList = new ArrayList();
         rList.add(Integer.valueOf(rule_id));
         try {
-            java.io.FileWriter localFileWriter = new java.io.FileWriter(fileName + ".json");
-            localFileWriter.write(gen.generate("false", rList).toString(2));
-            localFileWriter.flush();
-            localFileWriter.close();
-        } catch (IOException localIOException) {
-            localIOException.printStackTrace();
+            FileWriter fileOut = new FileWriter(fileName + ".json");
+            fileOut.write(gen.generate("false", rList).toString(2));
+            fileOut.flush();
+            fileOut.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
