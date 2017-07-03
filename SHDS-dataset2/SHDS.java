@@ -12,20 +12,20 @@ public class SHDS {
                 "BO", //Boston
                 "SF"  //San Francisco
         };
-        
-        /**
-        * Generating a topology:
-        * Topology generateTopology(int cID, double gridLength, double clusters){ ... }
-        *
-        * By knowing the city and size of grid, we can determine how many agents there should be in the problem
-        * int cID ---------- City identifier. We have 3 cities here:
-        *      0) Des Moines
-        *      1) Boston
-        *      2) San Francisco
-        * int clusters ----- Number of clusters in the problem (each cluster is a fully connected graph of houses, a neighborhood).
-        *                    Each cluster is connected to one other cluster, connecting the whole graph together.
-        * int gridLength --- Chunk of the city covered by the problem, this is in meters^2
-        **/
+
+        /*
+         Generating a topology:
+         Topology generateTopology(int cID, double gridLength, double clusters){ ... }
+
+         By knowing the city and size of grid, we can determine how many agents there should be in the problem
+         int cID ---------- City identifier. We have 3 cities here:
+              0) Des Moines
+              1) Boston
+              2) San Francisco
+         int clusters ----- Number of clusters in the problem (each cluster is a fully connected graph of houses, a neighborhood).
+                            Each cluster is connected to one other cluster, connecting the whole graph together.
+         int gridLength --- Chunk of the city covered by the problem, this is in meters^2
+        */
         JSONObject settings = new JSONObject();
         try {
             String content = Utilities.readFile(Parameters.getSettingsPath());
@@ -130,25 +130,30 @@ public class SHDS {
             break;
             case "-help":
                 System.out.println(
-                    "-datasets\n\tgenerates datasets with same settings used in paper.\n" +
-                    "-extras\n\tgenerates extra datasets mentioned in paper.\n" +
-                    "-generate <cityID> <gridLength> <clusterDiv> <numDevices>\n\tgenerates a custom dataset with extra arguments as settings.\n" +
-                    "-genAgents <rule_id> <time_span> <time_granularity> <num_agents> <house_size>\n\tgenerate a dataset of a single active rule for <num_agents> agents of given house size.\n" +
-                    "-regenerate <fileName>\n\tregenerates a dataset from a CSV file (provided from generation)\n" +
-                    "-test <rule_id> <time_span> <time_granularity> <OPTIONAL:num_files>\n\tgenerates a dataset with 1 house and 1 rule (with the given ruleID)\n" +
-                    "-tests <time_span> <time_granularity> <OPTIONAL:num_files>\n\tgenerates a dataset with 1 house FOR EACH rule\n");
+                    "-datasets\n\t" +
+                            "generates datasets with same settings used in paper.\n" +
+                    "-extras\n\t" +
+                            "generates extra datasets mentioned in paper.\n" +
+                    "-generate <cityID> <gridLength> <clusterDiv> <numDevices>\n\t" +
+                            "generates a custom dataset with extra arguments as settings.\n" +
+                    "-genAgents <rule_id> <time_span> <time_granularity> <num_agents> <house_size>\n\t" +
+                            "generate a dataset of a single active rule for <num_agents> agents of given house size.\n" +
+                    "-regenerate <fileName>\n\t" +
+                            "regenerates a dataset from a CSV file (provided from generation)\n" +
+                    "-test <rule_id> <time_span> <time_granularity> <OPTIONAL:num_files>\n\t" +
+                            "generates a dataset with 1 house and 1 rule (with the given ruleID)\n" +
+                    "-tests <time_span> <time_granularity> <OPTIONAL:num_files>\n\t" +
+                            "generates a dataset with 1 house FOR EACH rule\n");
             break;
         }
         
-        /**
-         * Generating the file
-         * void generateSHDSInstances(String fileName, int nDevices, Topology topo){ ... }
-         *
-         * Takes in: 1) file name, 2) number of devices, and 3) topology of the problem
-         **/
-        //
-        //
-        //
+        /*
+          Generating the file
+          void generateSHDSInstances(String fileName, int nDevices, Topology topo){ ... }
+
+          Takes in: 1) file name, 2) number of devices, and 3) topology of the problem
+         */
+
     }
     
     
@@ -156,12 +161,12 @@ public class SHDS {
     
     
     
-    public static void generateDatasets(int time_span, int time_granularity) {
-        /**************************************************
-         *
-         * Below is an example of how to generate data sets
-         *
-         **************************************************/
+    private static void generateDatasets(int time_span, int time_granularity) {
+        /*
+
+         Below is an example of how to generate data sets
+
+         */
 
         String[] city = {
                 "DM", //Des Moines
@@ -219,7 +224,7 @@ public class SHDS {
         }
     }
 
-    public static void generateExtras(int time_span, int time_granularity) {
+    private static void generateExtras(int time_span, int time_granularity) {
 
         String[] city = {
                 "DM", //Des Moines
@@ -288,7 +293,7 @@ public class SHDS {
      *                    Each cluster is connected to one other cluster, connecting the whole graph together.
      * int gridLength --- Chunk of the city covered by the problem, this is in meters^2
      **/
-    public static Topology generateTopology(int cID, double gridLength, double clusters) {
+    private static Topology generateTopology(int cID, double gridLength, double clusters) {
         double[] densityCity = {
                  718, // 0 --- Des Moines
                 1357, // 1 --- Boston
@@ -300,7 +305,7 @@ public class SHDS {
         return new Topology(densityCity[cID], gridLength, gridLength/clusters);
     }
 
-    public static void generateSHDSTest(String fileName, int rule_id, int span, int gran) {
+    private static void generateSHDSTest(String fileName, int rule_id, int span, int gran) {
         JSONArray devices = convertDevices(readDevices(), gran);
         RuleGenerator ruleGen = new RuleGenerator(span, gran, devices);
         Generator gen = new Generator(new Topology(1, 1), ruleGen, 1, new int[] { 1, 1, 1 });

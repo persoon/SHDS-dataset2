@@ -64,44 +64,6 @@ public class RuleGenerator {
     public int getGran() {
         return time_gran;
     }
-/*
-    public JSONArray generateRules(int nDevices, int hType) {
-        this.hType = hType;
-        JSONArray jArray = new JSONArray();
-        int cycle = 0;
-        int rId = 1;
-
-
-        // hType (house ID) will work as follows:
-        // 1) small, 2) medium, 3) large
-        // set dev_table = devices[hType] to set whether this is for small, medium, or large house so rules can be dynamic
-        Random rand = new Random();
-        ArrayList<Integer> list = new ArrayList<>(8);
-        for(int i = 1; i <= 8; i++) {
-            list.add(i);
-        }
-        boolean empty = false;
-        while(rId <= nDevices)
-        {
-            if(empty) {
-                list = new ArrayList<>(8);
-                for(int i = 0; i <= 8; i++) {
-                    list.add(i);
-                }
-                empty = false;
-                cycle++;
-            }
-
-            for (String rule : rulePicker(list.remove(rand.nextInt(list.size())), cycle))
-                jArray.put(rule);
-            rId++;
-            if(list.size() == 0) empty = true;
-
-        }
-
-        return jArray;
-    }
-*/
 
     public void addCSV(RuleParser.rand_var_id rvID, int value){
         rule_CSV.add(hID+" "+rID+" "+rvID.ordinal()+" "+value);
