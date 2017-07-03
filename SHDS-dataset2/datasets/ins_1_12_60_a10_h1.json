@@ -1,0 +1,304 @@
+{
+  "horizon": 12,
+  "granularity": 60,
+  "priceSchema": [
+    0.198,
+    0.198,
+    0.198,
+    0.198,
+    0.225,
+    0.225,
+    0.249,
+    0.849,
+    0.849,
+    0.225,
+    0.225,
+    0.198
+  ],
+  "agents": {
+    "h8": {
+      "neighbors": [
+        "h7",
+        "h9"
+      ],
+      "backgroundLoad": [
+        0.23133348542342752,
+        0.2814771964808859,
+        0.12582074121651743,
+        0.2179766391631832,
+        0.298335267586077,
+        0.25684969165192567,
+        0.2826609433583522,
+        0.088925928633187,
+        0.11915301416831647,
+        0.09448609333989527,
+        0.24167352283171928,
+        0.07966849804766628
+      ],
+      "houseType": 1,
+      "rules": [
+        "1 LG_WM2016CW laundry_wash geq 45 at 5",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60",
+        "1 LG_WM2016CW laundry_wash geq 60 within 6 11",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60"
+      ]
+    },
+    "h9": {
+      "neighbors": [
+        "h8",
+        "h10"
+      ],
+      "backgroundLoad": [
+        0.06122880871464798,
+        0.09134810710371578,
+        0.07215886049308336,
+        0.025210967368887813,
+        0.04569688253693933,
+        0.26454502769006144,
+        0.22206667691918552,
+        0.016444154065869642,
+        0.04714310760537377,
+        0.07752988049386453,
+        0.2856101575637596,
+        0.2768370598933924
+      ],
+      "houseType": 1,
+      "rules": [
+        "1 LG_WM2016CW laundry_wash geq 45 within 9 11",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60",
+        "1 LG_WM2016CW laundry_wash geq 45 at 4",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60"
+      ]
+    },
+    "h10": {
+      "neighbors": ["h9"],
+      "backgroundLoad": [
+        0.2515512290641243,
+        0.03295377628722199,
+        0.26646005799712696,
+        0.021283801094384467,
+        0.17289840995734657,
+        0.1372316475313715,
+        0.15106018118811873,
+        0.25159552573093635,
+        0.2868693227029437,
+        0.21686660409887024,
+        0.09957178308415299,
+        0.29069674490304376
+      ],
+      "houseType": 1,
+      "rules": [
+        "1 LG_WM2016CW laundry_wash geq 45 at 8",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60",
+        "1 LG_WM2016CW laundry_wash geq 45 after 6",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60"
+      ]
+    },
+    "h1": {
+      "neighbors": ["h2"],
+      "backgroundLoad": [
+        0.13534197198545136,
+        0.054260996873196174,
+        0.25629679886828116,
+        0.269230462732396,
+        0.24547845431654963,
+        0.1412783792016311,
+        0.03739717221371451,
+        0.1915124940534588,
+        0.2081340359412761,
+        0.26492168930582005,
+        0.1624278743720115,
+        0.20782438665150466
+      ],
+      "houseType": 1,
+      "rules": [
+        "1 LG_WM2016CW laundry_wash geq 60 at 3",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60",
+        "1 LG_WM2016CW laundry_wash geq 60 at 7",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60"
+      ]
+    },
+    "h2": {
+      "neighbors": [
+        "h1",
+        "h3"
+      ],
+      "backgroundLoad": [
+        0.11216536665162516,
+        0.02445226270548165,
+        0.21675569999939026,
+        0.2118056228764703,
+        0.1757980875914007,
+        0.11761607276543921,
+        0.10273400282442349,
+        0.08273720274288057,
+        0.02932172975295917,
+        0.09725736347076432,
+        0.15777149524924405,
+        0.26394854435442766
+      ],
+      "houseType": 1,
+      "rules": [
+        "1 LG_WM2016CW laundry_wash geq 45 after 7",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60",
+        "1 LG_WM2016CW laundry_wash geq 45 within 3 7",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60"
+      ]
+    },
+    "h3": {
+      "neighbors": [
+        "h2",
+        "h4"
+      ],
+      "backgroundLoad": [
+        0.2022033878699314,
+        0.08729356398557617,
+        0.23537327899095264,
+        0.2362091893962968,
+        0.27613881227814563,
+        0.2912084846547332,
+        0.11697885721769974,
+        0.008502774210924812,
+        0.24086866570407636,
+        0.01589811633888669,
+        0.1530353665407943,
+        0.0490174089410557
+      ],
+      "houseType": 1,
+      "rules": [
+        "1 LG_WM2016CW laundry_wash geq 60 within 5 10",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60",
+        "1 LG_WM2016CW laundry_wash geq 60 before 5",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60"
+      ]
+    },
+    "h4": {
+      "neighbors": [
+        "h3",
+        "h5"
+      ],
+      "backgroundLoad": [
+        0.20500348739000884,
+        0.09145559035371746,
+        0.1881122514775559,
+        5.855102191607564E-5,
+        0.22188964496146227,
+        0.17061372321383522,
+        0.17447348893262268,
+        0.038547311715284284,
+        0.08213236923015697,
+        0.11867370052766164,
+        0.2530541041909432,
+        0.015394548428815723
+      ],
+      "houseType": 1,
+      "rules": [
+        "1 LG_WM2016CW laundry_wash geq 60 after 5",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60",
+        "1 LG_WM2016CW laundry_wash geq 60 within 4 5",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60"
+      ]
+    },
+    "h5": {
+      "neighbors": [
+        "h4",
+        "h6"
+      ],
+      "backgroundLoad": [
+        0.22650292510344283,
+        0.1325387736500797,
+        0.20491788359513244,
+        0.11732986328545597,
+        0.07785668059289973,
+        0.17455112316739135,
+        0.2667418071425094,
+        0.011290993694987416,
+        0.08605743019999798,
+        0.1035442170369779,
+        0.25543815166958533,
+        0.19872473718759648
+      ],
+      "houseType": 1,
+      "rules": [
+        "1 LG_WM2016CW laundry_wash geq 45 within 10 11",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60",
+        "1 LG_WM2016CW laundry_wash geq 60 within 3 4",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60"
+      ]
+    },
+    "h6": {
+      "neighbors": [
+        "h5",
+        "h7"
+      ],
+      "backgroundLoad": [
+        0.28872272014220446,
+        0.2300385611086137,
+        0.041677305257400744,
+        0.22519428123192914,
+        0.07061448228788376,
+        0.020416937795267598,
+        0.03136826465923829,
+        0.2619465645597613,
+        0.2807645456192443,
+        0.08865509340433952,
+        0.22944929656884094,
+        0.05515502924612011
+      ],
+      "houseType": 1,
+      "rules": [
+        "1 LG_WM2016CW laundry_wash geq 45 before 7",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60",
+        "1 LG_WM2016CW laundry_wash geq 45 at 10",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60"
+      ]
+    },
+    "h7": {
+      "neighbors": [
+        "h6",
+        "h8"
+      ],
+      "backgroundLoad": [
+        0.15621638084262643,
+        0.07858429134727234,
+        0.14233738579272998,
+        0.12950255543223357,
+        0.09675156884873412,
+        0.29568231556723396,
+        0.1054351908618188,
+        0.273102860113672,
+        0.28398696115982797,
+        0.16373892604749926,
+        0.2381083881938946,
+        0.16848589032891745
+      ],
+      "houseType": 1,
+      "rules": [
+        "1 LG_WM2016CW laundry_wash geq 60 at 10",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60",
+        "1 LG_WM2016CW laundry_wash geq 60 before 4",
+        "0 LG_WM2016CW laundry_wash geq 0",
+        "0 LG_WM2016CW laundry_wash leq 60"
+      ]
+    }
+  }
+}
