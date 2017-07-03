@@ -480,8 +480,10 @@ public class RuleGenerator {
 
         int state = Utilities.genRand(50, 80);
         String relation = Utilities.genRand(new String[]{"geq", "gt"});
-
-        rules.add(activeGen(device, property, relation, state, randPredicate()));
+        
+        String predicate = Utilities.genRand(new String[]{"before", "after", "at", "within"});
+        
+        rules.add(activeGen(device, property, relation, state, predicate));
         rules.add("0 " + device + " " + property + " geq 0");
         rules.add("0 " + device + " " + property + " leq 100");
         rules.add("0 Roomba_880" + ((i>0) ? ("_" + i) : "") + " charge geq 0");

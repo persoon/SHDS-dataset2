@@ -91,11 +91,49 @@ public class SHDS {
                 //System.out.println("AGENTS: "+topo.getNumAgents());
                 regenDataset(args[1].replaceAll("_CSV.txt", ""), topo, settings.getInt("time_span"), settings.getInt("time_granularity"));
             break;
+            case "-genAgents":
+                topo = new Topology(Integer.parseInt(args[4]), Integer.parseInt(args[4]));
+                int[] houseRatio;
+                if(args[1].equals("all")) { //if user types all instead of a rule_id, generate every possible combination of rule_id and house_ratio
+                    for(int r = 1; r <= 8; r++) {
+                        houseRatio = new int[]{1, 0, 0};
+                        fileName = "datasets/ins_" + r + "_" + args[2] + "_" + args[3] + "_a" + args[4] + "_h" + 0;
+                        generateSHDSTest(fileName, r, topo, Integer.parseInt(args[2]), Integer.parseInt(args[3]), houseRatio);
+                        houseRatio = new int[]{0, 1, 0};
+                        fileName = "datasets/ins_" + r + "_" + args[2] + "_" + args[3] + "_a" + args[4] + "_h" + 1;
+                        generateSHDSTest(fileName, r, topo, Integer.parseInt(args[2]), Integer.parseInt(args[3]), houseRatio);
+                        houseRatio = new int[]{0, 0, 1};
+                        fileName = "datasets/ins_" + r + "_" + args[2] + "_" + args[3] + "_a" + args[4] + "_h" + 2;
+                        generateSHDSTest(fileName, r, topo, Integer.parseInt(args[2]), Integer.parseInt(args[3]), houseRatio);
+                    }
+                } else {
+                    fileName = "datasets/ins_" + args[1] + "_" + args[2] + "_" + args[3] + "_a" + args[4] + "_h" + args[5];
+
+                    switch(args[5]){
+                        case "0":
+                        case "small":
+                            houseRatio = new int[]{1, 0 ,0};
+                        break;
+                        case "1":
+                        case "medium":
+                            houseRatio = new int[]{0, 1 ,0};
+                        break;
+                        case "2":
+                        case "large":
+                            houseRatio = new int[]{0, 0 ,1};
+                        break;
+                        default:
+                            houseRatio = new int[]{0, 1, 0};
+                    }
+                    generateSHDSTest(fileName, Integer.parseInt(args[1]), topo, Integer.parseInt(args[2]), Integer.parseInt(args[3]), houseRatio);
+                }
+            break;
             case "-help":
                 System.out.println(
                     "-datasets\n\tgenerates datasets with same settings used in paper.\n" +
                     "-extras\n\tgenerates extra datasets mentioned in paper.\n" +
                     "-generate <cityID> <gridLength> <clusterDiv> <numDevices>\n\tgenerates a custom dataset with extra arguments as settings.\n" +
+                    "-genAgents <rule_id> <time_span> <time_granularity> <num_agents> <house_size>\n\tgenerate a dataset of a single active rule for <num_agents> agents of given house size.\n" +
                     "-regenerate <fileName>\n\tregenerates a dataset from a CSV file (provided from generation)\n" +
                     "-test <rule_id> <time_span> <time_granularity> <OPTIONAL:num_files>\n\tgenerates a dataset with 1 house and 1 rule (with the given ruleID)\n" +
                     "-tests <time_span> <time_granularity> <OPTIONAL:num_files>\n\tgenerates a dataset with 1 house FOR EACH rule\n");
@@ -268,6 +306,24 @@ public class SHDS {
         Generator gen = new Generator(new Topology(1, 1), ruleGen, 1, new int[] { 1, 1, 1 });
         ArrayList rList = new ArrayList();
         rList.add(Integer.valueOf(rule_id));
+        try {
+            FileWriter fileOut = new FileWriter(fileName + ".json");
+            fileOut.write(gen.generate("false", rList).toString(2));
+            fileOut.flush();
+            fileOut.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    // used for num_agents test with a specific rule id and house ratio
+    public static void generateSHDSTest(String fileName, int rule_id, Topology topo, int span, int gran, int[] houseRatio) {
+        JSONArray devices = convertDevices(readDevices(), gran);
+        RuleGenerator ruleGen = new RuleGenerator(span, gran, devices);
+        Generator gen = new Generator(topo, ruleGen, 2, houseRatio);
+        ArrayList rList = new ArrayList();
+        rList.add(Integer.valueOf(rule_id));
+        rList.add(Integer.valueOf(1));
         try {
             FileWriter fileOut = new FileWriter(fileName + ".json");
             fileOut.write(gen.generate("false", rList).toString(2));
